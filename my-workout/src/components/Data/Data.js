@@ -9,7 +9,11 @@ import Sidebar from '../Sidebar/Sidebar';
 const Data = () => {
     const [workouts, setWorkouts] = useState([]);
 
-
+    useEffect(() => {
+        fetch('datas.json')
+            .then(res => res.json())
+            .then(data => setWorkouts(data));
+    }, []);
 
     const workTimeEvent = (workout) => {
         console.log(workout);
