@@ -9,33 +9,29 @@ import Sidebar from '../Sidebar/Sidebar';
 const Data = () => {
     const [workouts, setWorkouts] = useState([]);
 
-    useEffect(()=> {
-        fetch('datas.json')
-        .then(res=>res.json())
-        .then( data => setWorkouts(data));
-    } ,[]);
 
-    const workTimeEvent= (workout)=>{
+
+    const workTimeEvent = (workout) => {
         console.log(workout);
     }
 
     return (
-        
-    <div className="information">
-        <div className='workout_section'>
-            {
-                workouts.map(workout=> <Workout 
-                                            key={workout.id}
-                                            workout={workout}
-                                            workTimeEvent={workTimeEvent}
-                                            >
 
-                                            </Workout>  )
+        <div className="information">
+            <div className='workout_section'>
+                {
+                    workouts.map(workout => <Workout
+                        key={workout.id}
+                        workout={workout}
+                        workTimeEvent={workTimeEvent}
+                    >
+
+                    </Workout>)
                 }
-            
+
+            </div>
+            <Sidebar data={workTimeEvent}></Sidebar>
         </div>
-        <Sidebar data={workTimeEvent}></Sidebar>
-  </div>
     );
 };
 
