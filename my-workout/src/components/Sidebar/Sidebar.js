@@ -17,7 +17,9 @@ const Sidebar = ({ data }) => {
     };
     const getLocalStorageItem = localStorage.getItem("break");
 
-    const notify = () => toast("Wow so easy!");
+    const notify = () => {
+        toast("Congratulation!!! Yes you did it ");
+    }
 
     return (
         <div className='user_info'>
@@ -67,8 +69,9 @@ const Sidebar = ({ data }) => {
                 <button onClick={notify} className='acti_btn'>Activity Completed</button>
 
             </div>
-            {/* <ToastContainer /> */}
+            <ToastContainer />
         </div>
+
     );
 };
 
