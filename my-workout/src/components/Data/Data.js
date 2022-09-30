@@ -14,9 +14,10 @@ const Data = () => {
             .then(res => res.json())
             .then(data => setWorkouts(data));
     }, []);
-
-    const workTimeEvent = (workout) => {
-        console.log(workout);
+    const [time, setTime] = useState(0);
+    const workTimeEvent = (Time) => {
+        setTime(time + Time);
+        console.log(time)
     }
 
     return (
@@ -34,7 +35,7 @@ const Data = () => {
                 }
 
             </div>
-            <Sidebar data={workTimeEvent}></Sidebar>
+            <Sidebar data={time}></Sidebar>
         </div>
     );
 };

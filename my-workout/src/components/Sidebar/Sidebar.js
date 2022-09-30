@@ -1,8 +1,8 @@
 import './Sidebar.css';
 import React from 'react';
 
-const Sidebar = (props) => {
-    console.log(props.Time);
+const Sidebar = ({ data }) => {
+
 
 
     return (
@@ -43,7 +43,7 @@ const Sidebar = (props) => {
             <div className="exercise">
                 <h1>Exercise Details</h1>
                 <div className="exercise_time">
-                    <h3>Exercise time <small className='sort_text'><span >{props.Time}</span> seconds</small> </h3>
+                    <h3>Exercise time <small className='sort_text'><span >{data}</span> minutes</small> </h3>
                 </div>
                 <div className="exercise_time">
                     <h3>Break time <small className='sort_text'><span >00</span> seconds</small> </h3>
