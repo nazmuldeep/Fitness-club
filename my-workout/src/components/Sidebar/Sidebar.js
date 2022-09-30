@@ -1,9 +1,23 @@
 import './Sidebar.css';
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Sidebar = ({ data }) => {
+    const [breakTime, setBreakTime] = useState([]);
+    useEffect(() => {
 
+    }, [breakTime]);
+    const addLocalStorage = Time => {
+        localStorage.setItem("break", Time);
+        setBreakTime(Time);
+    };
+    const getLocalStorageItem = localStorage.getItem("break");
 
+    const notify = () => toast("Wow so easy!");
 
     return (
         <div className='user_info'>
@@ -33,11 +47,11 @@ const Sidebar = ({ data }) => {
             <div className="brack">
                 <h1>Add A Break</h1>
                 <div className="physical_info exercise_time">
-                    <button className='brack_btn'><span>3</span>min</button>
-                    <button className='brack_btn'><span>5</span>min</button>
-                    <button className='brack_btn'><span>8</span>min</button>
-                    <button className='brack_btn'><span>10</span>min</button>
-                    <button className='brack_btn'><span>15</span>min</button>
+                    <button onClick={e => addLocalStorage(e.target.innerText)} className='brack_btn'>3</button>
+                    <button onClick={e => addLocalStorage(e.target.innerText)} className='brack_btn'>5</button>
+                    <button onClick={e => addLocalStorage(e.target.innerText)} className='brack_btn'>8</button>
+                    <button onClick={e => addLocalStorage(e.target.innerText)} className='brack_btn'>10</button>
+                    <button onClick={e => addLocalStorage(e.target.innerText)} className='brack_btn'>15</button>
                 </div>
             </div>
             <div className="exercise">
@@ -46,12 +60,14 @@ const Sidebar = ({ data }) => {
                     <h3>Exercise time <small className='sort_text'><span >{data}</span> minutes</small> </h3>
                 </div>
                 <div className="exercise_time">
-                    <h3>Break time <small className='sort_text'><span >00</span> seconds</small> </h3>
+                    <h3>Break time <small className='sort_text'><span >{getLocalStorageItem}</span> minutes </small> </h3>
                 </div>
             </div>
             <div className="acitivety">
-                <button className='acti_btn'>Activity Completed</button>
+                <button onClick={notify} className='acti_btn'>Activity Completed</button>
+
             </div>
+            {/* <ToastContainer /> */}
         </div>
     );
 };
